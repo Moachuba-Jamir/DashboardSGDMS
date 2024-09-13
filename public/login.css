@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
+}
+
+@font-face {
+  font-family: "gotham";
+  src: url("./assets/fonts/gotham.otf") format("opentype");
+}
+
+body{
+   background-color: #f4f0e1 !important;
+}
+
+
+/* Reset some basic styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f4f6;
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container for the login form */
+.login-container {
+     background-color: rgb(0, 34, 50);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    max-height: 500px;
+}
+
+/* Logo placeholder styling */
+.logo-placeholder img {
+    max-width: 150px;
+    margin-top: -20%;
+}
+
+/* Form header */
+h1 {
+    font-size: 24px !important  ;
+    margin-bottom: 30px;
+    color: #dedede !important;
+    font-family: gotham;
+    margin-top: -5% !important;
+    float: left;
+}
+
+/* Input group styling */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    padding-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #aaa;
+    transition: all 0.3s ease;
+}
+/* 
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: 5px;
+    font-size: 12px;
+    color: #555;
+} */
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
