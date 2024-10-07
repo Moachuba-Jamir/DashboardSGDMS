@@ -1,8 +1,8 @@
 export function fetchData() {
   // fetching data from the server
-  const server = "https://backend-for-sgdms-1.onrender.com/";
-  const getBins = "https://backend-for-sgdms-1.onrender.com/bins";
-  const updateDriver = "https://backend-for-sgdms-1.onrender.com/updateDriver";
+  const server = "https://dglmawjx1pzub.cloudfront.net/";
+  const getBins = "https://dglmawjx1pzub.cloudfront.net/bins";
+  const updateDriver = "https://dglmawjx1pzub.cloudfront.net/updateDriver";
   // const updateDriver = "http://localhost:3000/updateDriver";
 
   const originalCard = document.querySelector(".card");
@@ -47,16 +47,20 @@ export function fetchData() {
         const driver = drivers.find((d) => d.id === bins[i].id);
         if (driver) {
           nameNew.innerHTML = driver.driverName;
-          numberNew.innerHTML = driver.Phone;
+          let prettyNumber = driver.Phone.slice(2);
+          numberNew.innerHTML = prettyNumber;
         } else {
           nameNew.innerHTML = "No assigned driver";
           numberNew.innerHTML = "N/A";
         }
-        // console.log(`FOr drivers ${JSON.stringify(drivers, null, 2)}`);
 
+        // console.log(`FOr drivers ${JSON.stringify(drivers, null, 2)}`);
         newCard.setAttribute("data-id", bins[i].id);
         var buttons = newCard.querySelector(".notifyBtn");
+        const cardIndex = newCard.getAttribute("data-id");
+
         buttons.onclick = () => {
+          var phone;
           var notificationBody = document.querySelector(".notificationBody");
           console.log(notificationBody);
           waNotify.play();
@@ -68,7 +72,24 @@ export function fetchData() {
             notificationBody.classList.add("fade-out");
             notificationBody.style.display = "none";
           }, 5000);
-          console.log("A button has been pressed");
+          console.log(`Notify button pressed for Card ${cardIndex}`);
+          // send whats app message here
+          if (driver) {
+            phone = driver.Phone;
+            console.log(`from whats app fetch function: ${phone}`);
+          } else {
+            nameNew.innerHTML = "No assigned driver";
+            numberNew.innerHTML = "N/A";
+          }
+          fetch("https://dglmawjx1pzub.cloudfront.net/wa", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              phoneNumber: phone,
+            }),
+          });
         };
 
         var btnUpdate = newCard.querySelector(".btnUpdate");
@@ -109,17 +130,6 @@ export function fetchData() {
                   var updatedNumber = card.querySelector(".number");
                   updatedName.innerHTML = nameInput;
                   updatedNumber.innerHTML = numberInput;
-                  let name1 = document.querySelector(".name1");
-                  let name2 = document.querySelector(".name2");
-                  let name3 = document.querySelector(".name3");
-                  let name4 = document.querySelector(".name4");
-                  let name5 = document.querySelector(".name5");
-
-                  let driverNames = [name1, name2, name3, name4, name5];
-
-                  for (let i = 0; i < data.updatedDriver.length; i++) {
-                    driverNames[i].innerHTML = data.updatedDriver[i].driverName;
-                  }
                 })
                 .catch((error) => console.error("Error:", error));
               form.reset();
@@ -145,7 +155,6 @@ export function fetchData() {
             }
           });
         }
-
         var mapBtn = newCard.querySelector(".mapBtn");
         mapBtn.onclick = () => {
           var mapClick = document.getElementById("mapClick");
@@ -174,20 +183,6 @@ export function fetchData() {
         });
         dupCards.appendChild(newCard);
       }
-      // Update driver names in the sidebar or wherever they are displayed
-      let driverNames = [
-        document.querySelector(".name1"),
-        document.querySelector(".name2"),
-        document.querySelector(".name3"),
-        document.querySelector(".name4"),
-        document.querySelector(".name5"),
-      ];
-
-      drivers.forEach((driver, index) => {
-        if (driverNames[index]) {
-          driverNames[index].innerHTML = driver.driverName;
-        }
-      });
     })
     .catch((err) => {
       console.log("something went wrong while fetching the endpoint. " + err);

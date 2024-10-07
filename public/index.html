@@ -28,7 +28,7 @@
             autocomplete="name"
           />
         </div>
-        <div class="input-group">
+        <div class="input-group">   
           <input
             type="password"
             id="password"
@@ -48,9 +48,7 @@
         // Retrieve the initial history length from localStorage
         let initialHistoryLength = parseInt(
           localStorage.getItem("initialHistoryLength"),
-          10
         );
-
         // Compare with the current history length
         if (history.length !== initialHistoryLength) {
           console.log("History length has changed.");
@@ -67,6 +65,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="/login.js"></script>
+    <script src="./login.js"></script>
   </body>
 </html>

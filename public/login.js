@@ -1,8 +1,8 @@
-const adminLogin = "https://backend-for-sgdms-1.onrender.com/dashAdmin";
+const adminLogin = "https://dglmawjx1pzub.cloudfront.net/dashAdmin";
 var login = document.querySelector(".login-form");
 
 function isLoggedOut() {
-  fetch("https://backend-for-sgdms-1.onrender.com/dashAdmin/checkLogout")
+  fetch("https://dglmawjx1pzub.cloudfront.net/dashAdmin/checkLogout")
     .then((response) => {
       return response.json();
     })
@@ -26,7 +26,7 @@ login.addEventListener("submit", (event) => {
   var password = document.getElementById("password").value.trim();
 
   // post the form values to the required endpoint
-  fetch("https://backend-for-sgdms-1.onrender.com/dashAdmin", {
+  fetch("https://dglmawjx1pzub.cloudfront.net/dashAdmin", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -55,10 +55,6 @@ login.addEventListener("submit", (event) => {
     });
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
   isLoggedOut();
 });
-
-
-
