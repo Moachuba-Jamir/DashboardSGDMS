@@ -9,6 +9,10 @@ import {
   totalBins,
 } from "./chartOptions.js";
 
+const quewtions = {
+  
+}
+
 // fetching data from the server
 const adminRoute = "https://dglmawjx1pzub.cloudfront.net/adminRoute";
 const getBins = "https://dglmawjx1pzub.cloudfront.net/bins";
@@ -21,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((data) => {
       if (data.isLoggedOut) {
         // User is logged out, keep them on index.html
-        location.href = "./index.html";
+        location.href = "./index.html"; 
       } else {
         // User is logged in, redirect to dashboard
         location.href;
@@ -231,7 +235,6 @@ document.addEventListener("DOMContentLoaded", () => {
       name3.innerHTML = driverNames[2];
       name4.innerHTML = driverNames[3];
       name5.innerHTML = driverNames[4];
-
       console.log(`List of driver names: ${driverNames}`);
     })
     .catch((err) => {
@@ -269,7 +272,8 @@ function updateCards() {
             var button = card.querySelector(".notifyBtn");
             const percentElement = card.querySelector(".progressNotify");
             const cardBg = document.querySelector(".card");
-            if (binData <= 20) {
+            // reading bin levels and updating the progress bar
+            if (binData >140 && binData < 170) {
               bars.style.width = `90%`;
               bars.setAttribute("aria-valuenow", "90");
               button.disabled = false;
@@ -277,7 +281,7 @@ function updateCards() {
               bars.classList.add("bg-danger"); // Red color for above 80%
               bars.classList.remove("bg-success");
               bars.classList.remove("bg-warning");
-            } else if (binData > 20 && binData < 40) {
+            } else if (binData > 170 && binData < 180) {
               bars.style.width = `60% `;
               bars.setAttribute("aria-valuenow", "60");
               percentElement.innerHTML = `60%`;
@@ -286,7 +290,7 @@ function updateCards() {
               bars.classList.add("bg-warning"); // Yellow color for 40-60%
               bars.classList.remove("bg-danger"); // Red color for above 80%
               bars.classList.remove("bg-success");
-            } else if (binData > 40 && binData < 60) {
+            } else if (binData > 180 && binData < 190) {
               bars.style.width = `40% `;
               bars.setAttribute("aria-valuenow", "40");
               percentElement.innerHTML = `40%`;
@@ -319,4 +323,4 @@ function updateCards() {
     });
 }
 
-setInterval(updateCards, 10000);
+setInterval(updateCards, 500);

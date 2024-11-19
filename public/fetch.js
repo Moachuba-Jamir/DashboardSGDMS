@@ -71,7 +71,7 @@ export function fetchData() {
             notificationBody.classList.remove("fade-in");
             notificationBody.classList.add("fade-out");
             notificationBody.style.display = "none";
-          }, 5000);
+          }, 3000);
           console.log(`Notify button pressed for Card ${cardIndex}`);
           // send whats app message here
           if (driver) {

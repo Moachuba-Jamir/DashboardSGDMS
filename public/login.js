@@ -12,7 +12,7 @@ function isLoggedOut() {
         window.history.go(1);
       } else {
         window.location.href = "./dashboard.html";
-      }
+      }   
     })
     .catch((err) => {
       console.log("Could not automatically redirect user to dashboard", err);
