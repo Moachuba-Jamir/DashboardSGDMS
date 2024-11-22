@@ -10,13 +10,97 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./style.css" />
     <link rel="icon" href="./assets/images/4.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./chatbot.css" />
   </head>
   <body>
-    <!-- original card to be cloned -->
+    <div id="chatPopup" class="chat-popup">
+      <!-- chatbox-header -->
+      <div class="chat-header">
+        <div class="row">
+          <div class="col-2 botImgContainer">
+            <img
+              class="botImg"
+              src="./assets/images/avatar1.webp"
+              alt="chatbot"
+            />
+          </div>
+          <div class="col-7">
+            <span class="assistant"
+              >SGDMS ASSISTANT <br />
+              <span class="online">online</span>
+            </span>
+          </div>
+          <div class="col-2">
+            <span class="close"><i class="fas fa-angle-down"></i></span>
+          </div>
+        </div>
 
-    
+        <div class="col-12 chatBtnContainer">
+          <button id="technicalSupportButton" class="btn btn-warning">
+            <i class="fa-solid fa-gear fa"></i>
+          </button>
+          <button id="guideButton" class="btn btn-warning">
+            <i class="fa-solid fa-book-open menuBook"></i>
+          </button>
+          <button id="updateBtn" class="btn btn-warning">
+            <i class="fa-solid fa-rotate fa"></i>
+          </button>
+        </div>
+      </div>
+      <!-- <div id="welcomeheader" class="col-12">
+       
+      </div> -->
+
+      <div class="chat-body">
+        <div class="chatBodyInfo">
+          <ul class="welcomeList">
+            <li><i>Welcome! 😊 I am your personalised assistant.</i></li>
+            <li>
+              Tap the <i class="fa-solid fa-gear fa"></i> icon for
+              <b>techinical problems</b>
+            </li>
+
+            <li />
+            <li>
+              Tap the <i class="fa-solid fa-book-open openBook"></i> icon for
+              <b>SGDMS tutorials</b>
+            </li>
+            <li>
+              Tap the <i class="fa-solid fa-rotate"></i> Icon for the
+              <b>latest updates</b>
+            </li>
+          </ul>
+        </div>
+        <div class="scroll"></div>
+      </div>
+
+      <div class="footer" style="visibility: collapse"></div>
+
+      <div class="col-12 d-flex bottomBtns">  
+        <button class="btn btn-warning number" style="display: none">
+          <i class="fa-solid fa-phone"></i>&nbsp;
+          <a href="tel:+918787502617" class="phone">8787502617</a>
+        </button>
+        <button class="btn btn-success contact">
+          <i class="fa-solid fa-address-book fa"></i>
+        </button>
+        <button class="btn btn-warning menuBtn" style="display: none">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:sgdms.cloud" class="sgdmsMail">sgdms.cloud </a>
+        </button>
+      </div>
+    </div>
+    <!-- original card to be cloned -->
     <div style="display: none" class="container originalContainer">
       <div class="container cardsContainer">
         <div style="display: none" class="container card" data-id="01">
@@ -123,10 +207,10 @@
         </div>
       </div>
     </div>
-
     <!-- sound fx -->
     <audio id="mapClick" src="./assets/audio fx/mapClick.mp3"></audio>
     <audio id="waNotify" src="./assets/audio fx/notify.mp3"></audio>
+    <audio id="messagePop" src="./assets/audio fx/message.mp3"></audio>
 
     <div class="overAllContainer">
       <div class="row">
@@ -171,20 +255,26 @@
           <!-- for duplicated cards -->
           <div class="mainContainer container-fluid">
             <div class="row">
-              <div class="dupCards col-10"></div>
+              <!-- <div class="dupCards col-10"></div> -->
             </div>
 
             <div class="centerMap">
               <div class="container-fluid mapandLocation row">
                 <div class="col-10 overAllchart">
-                  <div id="chart7" style="height: 200px; width: 600px"></div>
+                  <div class="row">
+                    <div
+                      id="chart7"
+                      style="height: 200px; width: 650px"
+                      class="col-8"
+                    ></div>
+                  </div>
 
-                  <div id="map" class="myMap">
-                    <div class="myMapHeader">
-                      <span class="mapElements" id="mapName">Location</span>
-                      <span class="mapElements" id="mapId">Bin-Id</span>
-                    </div>
-                    <div class="mapContainer">
+                  <div class="mapContainer col-4">
+                    <div id="map" class="myMap">
+                      <div class="myMapHeader">
+                        <span class="mapElements" id="mapName">Location</span>
+                        <span class="mapElements" id="mapId">Bin-Id</span>
+                      </div>
                       <iframe
                         class="mapFrame"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114888.34761774314!2d93.59055375377329!3d25.860890401621546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3745e1f28b41fff3%3A0xdccf69dd5fa3c95!2sDimapur%2C%20Nagaland!5e0!3m2!1sen!2sin!4v1718781124920!5m2!1sen!2sin"
@@ -195,9 +285,19 @@
                       ></iframe>
                     </div>
                   </div>
+
+                  <div class="imgContanier">
+                    <img
+                      src="./assets/images/chatbot1.gif"
+                      alt=""
+                      id="supportButton"
+                      class="support-button"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="dupCards col-10"></div>
           </div>
         </div>
 
@@ -216,7 +316,6 @@
         </div>
 
         <!-- for driver analytics toggling  -->
-
         <div
           class="col-10 driverAnalticsContainer container driverContainer"
           style="display: none"
@@ -287,6 +386,7 @@
       </div>
       <!-- div.row end here -->
     </div>
+
     <script>
       // prevent user from leaving the page when back button is pressed
       window.addEventListener("beforeunload", function (e) {
@@ -296,6 +396,7 @@
 
     <script type="module" defer src="./cards.js"></script>
     <script type="module" defer src="./fetch.js"></script>
+    <script type="module" src="./chatbot.js"></script>
     <!-- bootstrap link  -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
@@ -303,5 +404,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   </body>
 </html>

@@ -226,7 +226,7 @@ img {
 
 /* styling for map */
 #map {
-  width: 500px !important;
+  width: 400px !important;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -706,7 +706,7 @@ input::placeholder {
 }
 .overAllchart {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   column-gap: 200px !important;
   margin-top: 1%;
@@ -744,6 +744,7 @@ input::placeholder {
 }
 
 .binClearedContainer {
+  background: rgba(0, 54, 54, 0.235);
   background: rgba(0, 54, 54, 0.235);
   padding: 1%;
   margin-top: 1%;
@@ -875,6 +876,11 @@ input::placeholder {
   -o-transform: scale(1.1);
 }
 
+.title{
+ font-family: gotham;
+ font-size: 1.4rem;
+ width: auto;
+}
 .wa {
   filter: invert(100%);
   -webkit-filter: invert(100%);
@@ -882,11 +888,11 @@ input::placeholder {
 
 #chart7 {
   margin-top: 3%;
-  margin-left: 3%;
+  margin-left: 5%;
   border-right: 2px solid #015043 !important;
   border-left: 2px solid #02653f;
   border-left: 2px solid #015043 !important;
-  padding-inline: 1%;
+  padding-inline: -5%;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top-left-radius: 10px;

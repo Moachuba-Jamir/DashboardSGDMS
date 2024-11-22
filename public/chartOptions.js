@@ -568,7 +568,7 @@ export const totalBins = {
   series: [
     {
       data: [
-        10, 12, 14, 60, 18, 20, 22, 25, 27, 30, 28, 55, 132, 34, 75, 38, 40, 42,
+        10, 12, 14, 60, 18, 20, 22, 25, 67, 30, 28, 135, 42, 34, 75, 38, 40, 42,
         85, 45,
       ],
     },
@@ -579,7 +579,8 @@ export const totalBins = {
     sparkline: {
       enabled: true,
     },
-  },
+  //   background: "#0036363c", // Add the background color here
+   },
   stroke: {
     curve: "smooth",
     colors: ["#03816c"],

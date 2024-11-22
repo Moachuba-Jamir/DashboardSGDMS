@@ -9,10 +9,6 @@ import {
   totalBins,
 } from "./chartOptions.js";
 
-const quewtions = {
-  
-}
-
 // fetching data from the server
 const adminRoute = "https://dglmawjx1pzub.cloudfront.net/adminRoute";
 const getBins = "https://dglmawjx1pzub.cloudfront.net/bins";
@@ -25,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((data) => {
       if (data.isLoggedOut) {
         // User is logged out, keep them on index.html
-        location.href = "./index.html"; 
+        location.href = "./index.html";
       } else {
         // User is logged in, redirect to dashboard
         location.href;
@@ -49,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   home.style.paddingLeft = "5%";
 
   home.addEventListener("click", () => {
+    console.log("home clicked ");
     driverContainer.style.display = "block";
     analyticsContainer.style.display = "none";
     home.style.boxShadow =
@@ -273,7 +270,7 @@ function updateCards() {
             const percentElement = card.querySelector(".progressNotify");
             const cardBg = document.querySelector(".card");
             // reading bin levels and updating the progress bar
-            if (binData >140 && binData < 170) {
+            if (binData > 140 && binData < 170) {
               bars.style.width = `90%`;
               bars.setAttribute("aria-valuenow", "90");
               button.disabled = false;
@@ -323,4 +320,4 @@ function updateCards() {
     });
 }
 
-setInterval(updateCards, 500);
+setInterval(updateCards, 60000); // 1 mintue
