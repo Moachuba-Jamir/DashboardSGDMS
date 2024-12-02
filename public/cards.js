@@ -320,4 +320,4 @@ function updateCards() {
     });
 }
 
-setInterval(updateCards, 60000); // 1 mintue
+setInterval(updateCards, 600000); // 10 minute
